@@ -1,7 +1,9 @@
 import { Heading, List } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenre";
 import ArtistsListItem from "./ArtistListItem";
-import useArtists from "../hooks/useArtists";
+import useArtists, { Artist, Artists } from "../hooks/useArtists";
+import { useRecoilState } from "recoil";
+import { videoQueryState } from "../atoms/videoQueryAtom";
 
 interface Props {
   onSelect: (genre: Genre) => void;
@@ -9,9 +11,9 @@ interface Props {
 }
 
 const GenreList = ({ onSelect, selectedGenre }: Props) => {
+  const [videoQuery, setVideoQuery] = useRecoilState(videoQueryState);
   const { data: genres, error, loading } = useGenres();
   const { data: artists } = useArtists();
-
   return (
     <>
       <Heading fontSize={"3xl"} marginBottom={2}>
@@ -28,9 +30,12 @@ const GenreList = ({ onSelect, selectedGenre }: Props) => {
         ))} */}
         {artists.map((artist) => (
           <ArtistsListItem
-            selectedArtist={null}
+            selectedArtist={videoQuery?.artist}
+            onSelect={(artist: Artists) => {
+              setVideoQuery({ ...videoQuery, artist });
+            }}
             key={artist.id}
-            artist={artist.attributes}
+            artist={artist}
           />
         ))}
       </List>

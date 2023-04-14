@@ -1,16 +1,16 @@
 import { Box, Button, HStack, ListItem } from "@chakra-ui/react";
 import { Genre } from "../hooks/useGenre";
-import { Artist } from "../hooks/useArtists";
+import { Artist, Artists } from "../hooks/useArtists";
 import { Category } from "../hooks/useCategories";
 import { FaUserCircle } from "react-icons/fa";
 
 interface Props {
-  artist: Artist;
-  //   onSelect: (genre: Genre) => void;
-  selectedArtist: Artist | null;
+  artist: Artists;
+  onSelect: (artist: Artists) => void;
+  selectedArtist: Artists | null;
 }
 
-const ArtistsListItem = ({ artist, selectedArtist }: Props) => {
+const ArtistsListItem = ({ artist, selectedArtist, onSelect }: Props) => {
   return (
     <ListItem paddingY="5px">
       <HStack>
@@ -24,15 +24,23 @@ const ArtistsListItem = ({ artist, selectedArtist }: Props) => {
           <FaUserCircle fontSize={"22px"} />
         </Box>
         <Button
-          fontWeight={artist.Name == selectedArtist?.Name ? "bold" : "normal"}
+          fontWeight={
+            artist?.attributes?.Name == selectedArtist?.attributes?.Name
+              ? "bold"
+              : "normal"
+          }
+          textDecoration={
+            artist?.attributes?.Name == selectedArtist?.attributes?.Name
+              ? "underline"
+              : "unset"
+          }
           fontSize={"lg"}
           variant="link"
           whiteSpace="normal"
           textAlign="right"
-          //   onClick={() => onSelect(genre)}
+          onClick={() => onSelect(artist)}
         >
-          {" "}
-          {artist.Name}
+          {artist?.attributes?.Name}
         </Button>
       </HStack>
     </ListItem>

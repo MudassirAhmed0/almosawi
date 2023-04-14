@@ -5,23 +5,26 @@ interface FetchResponse<T> {
   data: T[];
 }
 
-const useVideoData = <T>(endpoint: string) => {
+const useVideoData = <T>(endpoint: string, dep?: string) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    videoApiClient
-      .get(endpoint)
-      .then((res) => {
-        setData(res.data.data);
-      })
-      .catch((err) => setError(err.message))
-      .finally(() => {
-        setLoading(false);
-        console.log(data);
-      });
-  }, []);
+  useEffect(
+    () => {
+      setLoading(true);
+      videoApiClient
+        .get(endpoint)
+        .then((res) => {
+          setData(res.data.data);
+        })
+        .catch((err) => setError(err.message))
+        .finally(() => {
+          setLoading(false);
+        });
+      console.log(dep, "Fuck");
+    },
+    dep ? [dep] : []
+  );
   return { data, error, loading };
 };
 

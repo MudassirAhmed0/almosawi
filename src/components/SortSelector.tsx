@@ -1,6 +1,8 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import useCategories from "../hooks/useCategories";
+import { useRecoilState } from "recoil";
+import { videoQueryState } from "../atoms/videoQueryAtom";
 
 // interface Props {
 //   onSelectSortOrder: (sortOrder: string) => void;
@@ -11,6 +13,7 @@ const SortSelector = () =>
   // { onSelectSortOrder, sortOrder }: Props
   {
     const { data: categories } = useCategories();
+    const [videoQuery, setVideoQuery] = useRecoilState(videoQueryState);
     const sortOrders = [
       { value: "", label: "Relevance" },
       { value: "-added", label: "Date added" },
@@ -37,7 +40,9 @@ const SortSelector = () =>
         <MenuList>
           {categories.map((category) => (
             <MenuItem
-              // onClick={() => onSelectSortOrder(order.value)}
+              onClick={() =>
+                setVideoQuery({ ...videoQuery, category: category })
+              }
               key={category.attributes.Name}
               value={category.attributes.Name}
             >

@@ -4,7 +4,7 @@ export interface Tag {
   Name: string;
 }
 
-interface Tags {
+export interface Tags {
   id: number;
   attributes: Tag;
 }

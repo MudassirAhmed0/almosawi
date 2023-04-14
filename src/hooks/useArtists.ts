@@ -4,7 +4,7 @@ export interface Artist {
   Name: string;
 }
 
-interface Artists {
+export interface Artists {
   id: number;
   attributes: Artist;
 }

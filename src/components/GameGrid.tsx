@@ -4,6 +4,8 @@ import SkeltonCard from "./SkeltonCard";
 import { GameQuery } from "../App";
 import useVideos from "../hooks/useVideos";
 import VideoCard from "./VideoCard";
+import { useRecoilState } from "recoil";
+import { videoQueryState } from "../atoms/videoQueryAtom";
 
 interface Props {
   gameQuery: GameQuery;
@@ -13,12 +15,32 @@ const GameGrid = ({ gameQuery }: Props) => {
   const { data: games, error, loading } = useGames(gameQuery);
   // const { data: artist } = useArtists();
   // const { data: tags } = useTags();
+  const [videoQuery] = useRecoilState(videoQueryState);
 
+  let artistQuery: string = "";
+  let typesQuery: string = "";
+  let tagsQuery: string = "";
+  if (videoQuery.tag) {
+    tagsQuery = `filters[tags]=${videoQuery.tag.id}`;
+  }
+  if (videoQuery.category) {
+    console.log(tagsQuery, tagsQuery);
+    typesQuery = `filters[types]=${videoQuery.category.id}${
+      tagsQuery ? "&" : ""
+    }`;
+  }
+  if (videoQuery.artist) {
+    artistQuery = `filters[readers]=${videoQuery.artist.id}${
+      typesQuery ? "&" : tagsQuery ? "&" : ""
+    }`;
+  }
+
+  const queryString = artistQuery + typesQuery + tagsQuery;
   const {
     data: videos,
     loading: videosLoading,
     error: videosError,
-  } = useVideos();
+  } = useVideos(queryString);
   const skeletons = [1, 2, 3, 4, 5, 6];
   return (
     <>

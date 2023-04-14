@@ -1,4 +1,6 @@
+import { useRecoilState } from "recoil";
 import useVideoData from "./useVideoData";
+import { videoQueryState } from "../atoms/videoQueryAtom";
 
 export interface Video {
   url: string;
@@ -10,6 +12,8 @@ interface Videos {
   attributes: Video;
 }
 
-const useVideos = () => useVideoData<Videos>("/mjalis-yts?filters\readers=1");
+const useVideos = (queryString: string) => {
+  return useVideoData<Videos>(`/mjalis-yts?${queryString}`, queryString);
+};
 
 export default useVideos;
