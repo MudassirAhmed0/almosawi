@@ -7,6 +7,7 @@ import { RecoilRoot } from "recoil";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import VideoList from "./pages/VideoList";
 import VideoDetail from "./pages/VideoDetail";
+import "./App.css";
 
 const routes = createBrowserRouter([
   {
