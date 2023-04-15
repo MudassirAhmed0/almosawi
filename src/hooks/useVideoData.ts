@@ -21,7 +21,6 @@ const useVideoData = <T>(endpoint: string, dep?: string) => {
         .finally(() => {
           setLoading(false);
         });
-      console.log(dep, "Fuck");
     },
     dep ? [dep] : []
   );

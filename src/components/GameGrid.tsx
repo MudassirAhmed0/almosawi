@@ -24,7 +24,6 @@ const GameGrid = ({ gameQuery }: Props) => {
     tagsQuery = `filters[tags]=${videoQuery.tag.id}`;
   }
   if (videoQuery.category) {
-    console.log(tagsQuery, tagsQuery);
     typesQuery = `filters[types]=${videoQuery.category.id}${
       tagsQuery ? "&" : ""
     }`;
@@ -52,7 +51,11 @@ const GameGrid = ({ gameQuery }: Props) => {
           <GameCard key={game.id} game={game} />
         ))} */}
         {videos.map((video) => (
-          <VideoCard key={video.id} video={video.attributes} />
+          <VideoCard
+            key={video.id}
+            videoId={video.id}
+            video={video.attributes}
+          />
         ))}
       </SimpleGrid>
     </>

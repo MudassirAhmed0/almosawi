@@ -13,7 +13,12 @@ interface Videos {
 }
 
 const useVideos = (queryString: string) => {
-  return useVideoData<Videos>(`/mjalis-yts?${queryString}`, queryString);
+  return useVideoData<Videos>(
+    `/mjalis-yts?${queryString}`,
+    queryString
+      ? queryString
+      : "final argument and first should be same so after changing its string so before also it should be string"
+  );
 };
 
 export default useVideos;

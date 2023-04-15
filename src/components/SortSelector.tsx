@@ -34,7 +34,9 @@ const SortSelector = () =>
           as={Button}
           rightIcon={<BsChevronDown />}
         >
-          نوع
+          {videoQuery.category?.attributes.Name
+            ? videoQuery.category?.attributes.Name
+            : "نوع"}
           {/* {currentSortOrder?.label || "Relevance"} */}
         </MenuButton>
         <MenuList>

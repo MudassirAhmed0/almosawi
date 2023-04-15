@@ -19,7 +19,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import { BsSearch } from "react-icons/bs";
 import Filters from "./components/Filters";
-
+import "./App.css";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
@@ -27,34 +27,7 @@ export interface GameQuery {
 }
 
 const App = () => {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-
-  return (
-    <Grid
-      overflow={"hidden"}
-      templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main" ` }}
-      templateColumns={{
-        base: "1fr",
-        lg: "240px 1fr",
-      }}
-    >
-      <GridItem area={"nav"}>
-        <NavBar />
-      </GridItem>
-      <Show above="lg">
-        <GridItem area={"aside"} padding={"16px"}>
-          <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelect={(genre) => setGameQuery({ ...gameQuery, genre })}
-          />
-        </GridItem>
-      </Show>
-      <GridItem area={"main"} paddingX={4}>
-        <Filters gameQuery={gameQuery} setGameQuery={setGameQuery} />
-        <GameGrid gameQuery={gameQuery} />
-      </GridItem>
-    </Grid>
-  );
+  return <div></div>;
 };
 
 export default App;

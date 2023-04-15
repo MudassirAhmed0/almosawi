@@ -14,27 +14,20 @@ const Filters = ({ gameQuery, setGameQuery }: Props) => {
   return (
     <>
       <Stack marginY={5} gap={5}>
-        <HStack gap={2} justifyContent={"space-between"}>
+        <HStack paddingX={4} gap={2} justifyContent={"space-between"}>
           {/* <SearchBox /> */}
           <Heading fontSize={"5xl"}>أشرطة فيديو</Heading>
           <Box>
             <SortSelector />
           </Box>
         </HStack>
-        <HStack justifyContent={"space-between"} marginTop={8}>
+        <HStack
+          paddingX={{ md: 4 }}
+          mr={{ base: "auto" }}
+          justifyContent={"space-between"}
+          marginTop={8}
+        >
           <BadgesFilter />
-          {/* <HStack gap={2}>
-        <PlatformSelector
-        onSelect={(platform) => setGameQuery({ ...gameQuery, platform })}
-        selectedPlatform={gameQuery.platform}
-        />
-        <SortSelector
-        onSelectSortOrder={(order) =>
-          setGameQuery({ ...gameQuery, ordering: order })
-        }
-        sortOrder={gameQuery.ordering}
-        />
-      </HStack> */}
         </HStack>
       </Stack>
     </>

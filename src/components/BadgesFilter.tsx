@@ -8,7 +8,14 @@ const BadgesFilter = () => {
   const [videoQuery, setVideoQuery] = useRecoilState(videoQueryState);
   const selectedTag = videoQuery.tag;
   return (
-    <Stack direction="row">
+    <Stack
+      direction="row"
+      overflow={"scroll"}
+      width={{ base: "95vw", md: "auto" }}
+      className="hideScroll"
+      paddingBottom={2}
+      mr={{ base: "auto", md: "0" }}
+    >
       {tags.map((tag) => (
         <Badge
           key={tag.id}
