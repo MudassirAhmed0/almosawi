@@ -7,11 +7,36 @@ import { RecoilRoot } from "recoil";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import VideoList from "./pages/VideoList";
 import VideoDetail from "./pages/VideoDetail";
-import "./App.css";
+import "./index.css";
+import Home from "./pages/Home";
+import Live from "./pages/Live";
+import DVR from "./pages/DVR";
+import Audio from "./pages/Audio";
+import Player from "./pages/Player";
 
 const routes = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "live",
+    element: <Live />,
+  },
+  {
+    path: "dvr",
+    element: <DVR />,
+  },
+  {
+    path: "audio",
+    element: <Audio />,
+  },
+  {
+    path: "player",
+    element: <Player />,
+  },
+  {
+    path: "video",
     element: <VideoList />,
   },
   {

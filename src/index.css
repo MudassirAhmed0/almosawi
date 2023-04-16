@@ -1,0 +1,9 @@
+.hideScroll::-webkit-scrollbar{
+    display: none;
+}
+
+
+#nayaRoot{
+    overflow-x: hidden;
+    position: relative;
+  }

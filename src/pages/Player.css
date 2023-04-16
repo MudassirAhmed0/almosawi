@@ -1,0 +1,58 @@
+ 
+.player-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+    /* padding-top: 56.25%;  */
+    /* 720 / 1280 = 0.5625 */
+    /*
+    background-image: url("http://localhost:3000/assets/images/img-2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    */
+    color: #fff;
+    font-size: 100px;
+    max-width: 800px;
+    max-height: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.player-wrapper  video{
+  position: relative;
+}
+.background-wrapper {
+  position: relative;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background-image: url("/assets/images/img-2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+
+/* .react-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%; 
+  z-index: 2;
+} */
+
+@media (max-width: 768px) {
+  .player-wrapper {
+      
+      max-width: 92%;
+      max-height: 350px;
+  }
+ }

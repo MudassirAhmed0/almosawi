@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useVideo from "../hooks/useVideo";
-import VideoCard from "../components/VideoCard";
+import VideoCard from "../components/video-components/VideoCard";
 import { Video } from "../hooks/useVideos";
 import {
   AspectRatio,
@@ -11,7 +11,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/video-components/Navbar";
 const VideoDetail = () => {
   const { videoId } = useParams();
   const { data } = useVideo(videoId as string);

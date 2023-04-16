@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { GameQuery } from "../App";
 import { Box, Grid, GridItem, Show } from "@chakra-ui/react";
-import Navbar from "../components/Navbar";
-import GenreList from "../components/GenreList";
-import Filters from "../components/Filters";
-import GameGrid from "../components/GameGrid";
+import Navbar from "../components/video-components/Navbar";
+import GenreList from "../components/video-components/GenreList";
+import Filters from "../components/video-components/Filters";
+import GameGrid from "../components/video-components/GameGrid";
 
 const VideoList = () => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
